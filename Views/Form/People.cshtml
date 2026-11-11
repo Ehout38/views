@@ -1,0 +1,28 @@
+@model Dictionary<int, Person>
+@{
+    ViewData["Title"] = "People dictionary";
+    var index = 0;
+}
+<h1>Dictionary model binding</h1>
+<form asp-action="People" method="post">
+    <div asp-validation-summary="All" class="validation" role="alert"></div>
+    <table>
+        <thead><tr><th>Key</th><th>Name</th><th>Age</th></tr></thead>
+        <tbody>
+            @foreach (var pair in Model)
+            {
+                <tr>
+                    <td>
+                        @pair.Key
+                        <input type="hidden" name="peopleDictionary[@index].Key" value="@pair.Key" />
+                        <input type="hidden" name="peopleDictionary[@index].Value.Id" value="@pair.Value.Id" />
+                    </td>
+                    <td><input name="peopleDictionary[@index].Value.Name" value="@pair.Value.Name" aria-label="Name for person @pair.Key" required maxlength="50" /></td>
+                    <td><input type="number" name="peopleDictionary[@index].Value.Age" value="@pair.Value.Age" aria-label="Age for person @pair.Key" min="1" max="120" required /></td>
+                </tr>
+                index++;
+            }
+        </tbody>
+    </table>
+    <button type="submit">Submit people</button>
+</form>

@@ -1,0 +1,10 @@
+@model object
+@{
+    ViewData["Title"] = "Anonymous model";
+    var name = Model.GetType().GetProperty("Name")?.GetValue(Model);
+    var age = Model.GetType().GetProperty("Age")?.GetValue(Model);
+}
+<h1>Anonymous model</h1>
+<p>Name: @name</p>
+<p>Age: @age</p>
+<a asp-action="Data">Back to data examples</a>

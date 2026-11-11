@@ -1,0 +1,37 @@
+@model Student
+@{
+    ViewData["Title"] = "Partial views";
+}
+<h1>Partial views</h1>
+<section>
+    <h2>Embedded partial</h2>
+    @await Html.PartialAsync("_Message", "This partial was rendered with the page.")
+    <button type="button" id="loadMessage" data-url="@Url.Action("Message")">Load another partial</button>
+    <div id="messageResult" aria-live="polite"></div>
+</section>
+<section>
+    <h2>Live book search</h2>
+    <form asp-action="GetBooks" method="get" id="bookSearch" class="form">
+        <label for="query">Book title</label>
+        <input id="query" name="query" type="search" autocomplete="off" />
+        <button type="submit">Search</button>
+    </form>
+    <p id="bookStatus" aria-live="polite"></p>
+    <div id="books" aria-live="polite"></div>
+</section>
+<section>
+    <h2>Create student</h2>
+    <form asp-action="CreateStudent" method="post" id="studentForm" class="form">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" autocomplete="name" />
+        <label asp-for="Email"></label>
+        <input asp-for="Email" autocomplete="email" />
+        <label asp-for="Phone"></label>
+        <input asp-for="Phone" autocomplete="tel" />
+        <button type="submit">Create student</button>
+    </form>
+    <div id="studentResult" aria-live="polite"></div>
+</section>
+@section Scripts {
+    <script src="~/js/partials.js" asp-append-version="true"></script>
+}

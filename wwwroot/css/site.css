@@ -1,0 +1,35 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; color: #203047; background: #f5f7fb; line-height: 1.6; }
+header, footer { background: white; padding: 20px max(24px, calc((100vw - 1100px) / 2)); border-bottom: 1px solid #dce2ed; }
+header { display: flex; gap: 30px; align-items: center; flex-wrap: wrap; }
+.brand { font-size: 1.5rem; font-weight: 700; }
+nav, .actions { display: flex; flex-wrap: wrap; gap: 16px; }
+a { color: #2856ac; text-decoration: none; }
+a:hover { text-decoration: underline; }
+main { max-width: 1100px; margin: 30px auto; min-height: 65vh; padding: 0 24px; }
+h1 { line-height: 1.25; }
+section, .card { background: white; border: 1px solid #dce2ed; border-radius: 8px; padding: 22px; margin-bottom: 22px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.card { color: inherit; }
+.form { display: grid; gap: 9px; max-width: 520px; }
+input, textarea, select, button, .button { font: inherit; border: 1px solid #bdc8da; border-radius: 5px; padding: 9px 12px; }
+input, textarea, select { width: 100%; background: white; color: inherit; }
+input[type=checkbox], input[type=radio] { width: auto; }
+button, .button { background: #2856ac; color: white; cursor: pointer; display: inline-block; }
+button:hover, .button:hover { background: #1a3d80; text-decoration: none; }
+button:disabled { opacity: .6; cursor: wait; }
+fieldset { border: 1px solid #bdc8da; border-radius: 5px; }
+.check { display: inline-flex; align-items: center; gap: 8px; margin-right: 12px; }
+.hint { margin-top: 0; font-size: .9rem; color: #53657c; }
+.validation { color: #a92037; }
+.validation:empty { display: none; }
+.success, .notice { padding: 16px; border-radius: 5px; background: #e3f4eb; }
+.notice { background: #eaf0fc; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 20px; background: white; }
+th, td { border: 1px solid #dce2ed; text-align: left; padding: 12px; }
+dt { font-weight: bold; }
+dd { margin: 0 0 12px; }
+footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid #dce2ed; }
+dialog { border: 1px solid #bdc8da; border-radius: 8px; max-width: 460px; padding: 24px; }
+dialog::backdrop { background: #20304788; }
+:focus-visible { outline: 3px solid #8badf0; outline-offset: 2px; }

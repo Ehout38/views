@@ -1,0 +1,27 @@
+@model ProfileViewModel
+@{
+    ViewData["Title"] = "Profile";
+    var message = TempData["Message"] as string;
+}
+<h1>Profile form</h1>
+<p>Submit the form to receive a TempData message after a redirect.</p>
+@if (message != null)
+{
+    <p class="success" role="status">@message</p>
+    <dialog id="successDialog">
+        <h2>Profile submitted</h2>
+        <p>@message</p>
+        <button type="button" id="closeDialog">Close</button>
+    </dialog>
+}
+<form asp-action="Profile" method="post" class="form">
+    <div asp-validation-summary="All" class="validation" role="alert"></div>
+    <label asp-for="Name"></label>
+    <input asp-for="Name" autocomplete="name" />
+    <label asp-for="Email"></label>
+    <input asp-for="Email" autocomplete="email" />
+    <button type="submit">Submit profile</button>
+</form>
+@section Scripts {
+    <script src="~/js/profile.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,82 @@
+@{
+    ViewData["Title"] = "Razor syntax";
+    var enabled = true;
+    var number = 6;
+    var index = 1;
+    string[] phones = ["iPhone", "Pixel", "Galaxy"];
+}
+@functions {
+    public int Factorial(int value)
+    {
+        var result = 1;
+        for (var i = 2; i <= value; i++)
+            result *= i;
+        return result;
+    }
+}
+<h1>Razor syntax</h1>
+<section>
+    <h2>Expressions and functions</h2>
+    <p>20 + 30 = @(20 + 30)</p>
+    <p>Contact: hello@@example.com</p>
+    <p>6! = @Factorial(6)</p>
+    @if (enabled)
+    {
+        @: This line is displayed when the condition is true.
+    }
+    @switch (number)
+    {
+        case 6:
+            <p>The selected number is six.</p>
+            break;
+        default:
+            <p>A different number is selected.</p>
+            break;
+    }
+</section>
+<section class="cards">
+    <div><h2>For</h2>
+        @for (var i = 1; i <= 3; i++)
+        {
+            <p>Row @i</p>
+        }
+    </div>
+    <div><h2>While</h2>
+        @while (index <= 3)
+        {
+            <p>Row @(index++)</p>
+        }
+    </div>
+    <div><h2>Do while</h2>
+        @{ index = 1; }
+        @do
+        {
+            <p>Row @(index++)</p>
+        }
+        while (index <= 3);
+    </div>
+    <div><h2>Foreach</h2>
+        @foreach (var phone in phones)
+        {
+            <p>@phone</p>
+        }
+    </div>
+</section>
+<section>
+    <h2>Exception handling</h2>
+    @try
+    {
+        throw new InvalidOperationException("Example exception");
+    }
+    catch (InvalidOperationException exception)
+    {
+        <p>Caught: @exception.Message</p>
+    }
+    finally
+    {
+        <p>The final block has completed.</p>
+    }
+</section>
+@section Styles {
+    <style>.cards h2 { font-size: 1.15rem; }</style>
+}

@@ -1,0 +1,30 @@
+@inject Views.Services.ITimeService Timer
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Views</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <header>
+        <a class="brand" asp-controller="Home" asp-action="Index">Views</a>
+        <nav aria-label="Main menu">
+            <a asp-controller="Home" asp-action="Data">Data</a>
+            <a asp-controller="Home" asp-action="Syntax">Razor</a>
+            <a asp-controller="Form" asp-action="Index">Form</a>
+            <a asp-controller="Form" asp-action="Profile">Profile</a>
+            <a asp-controller="Form" asp-action="People">People</a>
+            <a asp-controller="Partial" asp-action="Index">Partials</a>
+            <a asp-controller="Custom" asp-action="Index">Custom view</a>
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>ASP.NET Core MVC Views <span>Server time: @Timer.GetTime() UTC</span></footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

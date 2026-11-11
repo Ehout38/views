@@ -1,0 +1,41 @@
+@model FormViewModel
+@{
+    ViewData["Title"] = "Form";
+    string[] phones = ["iPhone", "Pixel", "Galaxy"];
+}
+<h1>HTML form inputs</h1>
+<form asp-action="Index" method="post" class="form">
+    <div asp-validation-summary="All" class="validation" role="alert"></div>
+    <label asp-for="Login"></label>
+    <input asp-for="Login" autocomplete="username" />
+    <label asp-for="Password"></label>
+    <input asp-for="Password" autocomplete="new-password" value="" />
+    <label asp-for="Age"></label>
+    <input asp-for="Age" min="13" max="120" />
+    <label asp-for="Comment"></label>
+    <textarea asp-for="Comment" rows="3"></textarea>
+    <label class="check"><input asp-for="IsMarried" /> Married</label>
+    <fieldset>
+        <legend>Favorite color</legend>
+        @foreach (var color in new[] { "red", "blue", "green" })
+        {
+            <label class="check"><input asp-for="Color" type="radio" value="@color" /> @color</label>
+        }
+    </fieldset>
+    <label asp-for="Phone">Main phone</label>
+    <select asp-for="Phone">
+        @foreach (var phone in phones)
+        {
+            <option value="@phone">@phone</option>
+        }
+    </select>
+    <label asp-for="Phones">Other phones</label>
+    <select asp-for="Phones" multiple size="3">
+        @foreach (var phone in phones)
+        {
+            <option value="@phone">@phone</option>
+        }
+    </select>
+    <p class="hint">Hold Ctrl or Command to select several phones.</p>
+    <button type="submit">Submit</button>
+</form>

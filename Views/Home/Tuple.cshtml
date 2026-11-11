@@ -1,0 +1,8 @@
+@model (string Name, int Age)
+@{
+    ViewData["Title"] = "Tuple model";
+}
+<h1>Tuple model</h1>
+<p>Name: @Model.Name</p>
+<p>Age: @Model.Age</p>
+<a asp-action="Data">Back to data examples</a>

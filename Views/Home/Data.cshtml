@@ -1,0 +1,30 @@
+@model IndexViewModel
+@{
+    ViewData["Title"] = "Passing data";
+    var person = ViewData["Person"] as Person;
+}
+<h1>Passing data to a view</h1>
+<section>
+    <h2>ViewData</h2>
+    <p>@ViewData["Welcome"]</p>
+    <p>@person?.Name is @person?.Age years old.</p>
+</section>
+<section>
+    <h2>ViewBag</h2>
+    <ul>
+        @foreach (string country in ViewBag.Countries)
+        {
+            <li>@country</li>
+        }
+    </ul>
+</section>
+<section>
+    <h2>@Model.Title</h2>
+    <p>The model contains @Model.Values.Count values.</p>
+    @await Html.PartialAsync("_Values", Model.Values)
+</section>
+<div class="actions">
+    <a class="button" asp-action="Tuple">Tuple model</a>
+    <a class="button" asp-action="Dynamic">Dynamic model</a>
+    <a class="button" asp-action="Anonymous">Anonymous model</a>
+</div>

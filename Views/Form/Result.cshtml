@@ -1,0 +1,16 @@
+@model FormViewModel
+@{
+    ViewData["Title"] = "Form result";
+}
+<h1>Submitted form</h1>
+<dl>
+    <dt>Login</dt><dd>@Model.Login</dd>
+    <dt>Age</dt><dd>@Model.Age</dd>
+    <dt>Comment</dt><dd>@(Model.Comment ?? "None")</dd>
+    <dt>Married</dt><dd>@(Model.IsMarried ? "Yes" : "No")</dd>
+    <dt>Color</dt><dd>@Model.Color</dd>
+    <dt>Main phone</dt><dd>@Model.Phone</dd>
+    <dt>Other phones</dt><dd>@string.Join(", ", Model.Phones)</dd>
+</dl>
+<p>The password was validated and discarded.</p>
+<a class="button" asp-action="Index">Try again</a>

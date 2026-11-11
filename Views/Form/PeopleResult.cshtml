@@ -1,0 +1,15 @@
+@model Dictionary<int, Person>
+@{
+    ViewData["Title"] = "People result";
+}
+<h1>Submitted dictionary</h1>
+<table>
+    <thead><tr><th>Key</th><th>Id</th><th>Name</th><th>Age</th></tr></thead>
+    <tbody>
+        @foreach (var pair in Model)
+        {
+            <tr><td>@pair.Key</td><td>@pair.Value.Id</td><td>@pair.Value.Name</td><td>@pair.Value.Age</td></tr>
+        }
+    </tbody>
+</table>
+<a asp-action="People">Edit another dictionary</a>
